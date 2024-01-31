@@ -3,19 +3,28 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="styles.css" />
+    <script src="index.js" type="module" defer></script>
     <title>Pong Game</title>
   </head>
   <body>
-    <main>
-      <div class="player-container">
-        <div class="player">You</div>
-        <div class="player-score">0</div>
-      </div>
-      <div class="computer-container">
-        <div class="computer">Computer</div>
-        <div class="computer-score">0</div>
-      </div>
-    </main>
+    <h1 class="title">Pong Game</h1>
+    <p class="subtitle">
+      Control the player by using the up and down arrow keys
+    </p>
+    <div class="scores">
+      <div class="bot-score">0</div>
+      <div class="player-score">0</div>
+    </div>
+    <div id="ball" class="ball"></div>
+    <div class="paddle left" id="bot-paddle"></div>
+    <div class="paddle right" id="player-paddle"></div>
+    <button class="reset-btn">Reset</button>
   </body>
 </html>
