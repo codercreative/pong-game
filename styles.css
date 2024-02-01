@@ -23,11 +23,14 @@ body {
   width: 100%;
   text-align: center;
   position: relative;
+  /* to avoid scroll bar when ball goes off the page */
+  overflow: hidden;
 }
 
 .title,
 .subtitle {
   margin: 0;
+  color: var(--foreground-color);
 }
 
 .title {
@@ -45,15 +48,25 @@ body {
   font-size: 3rem;
   position: absolute;
   top: 2.5em;
-  left: 50%;
-  transform: translateX(-50%);
+  left: 0;
+  right: 0;
 }
 
-.title,
-.subtitle,
-.bot-score,
-.player-score {
+.scores > * {
   color: var(--foreground-color);
+  padding: 0 0.3em;
+  opacity: 60%;
+  flex-grow: 1;
+  flex-basis: 0;
+}
+
+.scores > :first-child {
+  text-align: right;
+  border-right: 2px solid var(--foreground-color);
+}
+
+.scores > :last-child {
+  text-align: left;
 }
 
 .paddle {
@@ -102,10 +115,10 @@ body {
   transform: translateX(-50%);
   bottom: 2em;
 
-  width: 20vw;
+  width: 10vw;
   background-color: var(--foreground-color);
   color: var(--background-color);
-  font-size: 2rem;
+  font-size: 1rem;
   font-weight: bold;
   padding: 0.4em;
   border: none;
