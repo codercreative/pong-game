@@ -2,11 +2,11 @@
 
 ### The challenge:
 
-Building a pong game with html, css and JavaScript.
+Building a pong game with HTML, CSS and JavaScript.
 
-### Visually Depicting Flow:
+### Screenshot:
 
-![screenshot](images/---png)
+![screenshot](pong.png)
 
 ### How does the app work?
 
@@ -24,12 +24,15 @@ Pong is a classic arcade game that simulates table tennis. The bot and player ha
 
 ### What I learned along the way
 
-- Using the canvas html element
+- Animation with requestAnimationFrame
+- Collision detection with getBoundingClientRect
+- Object-Oriented Programming by creating Ball and Paddle classes
 - Positioning the paddles
 
-### Cool functionality to add
+### Additional features to add later...
 
-- Confetti when player wins
-- Background color changes when game gets harder to play
-
-### Resources:
+- Confetti and shoutout text if player wins after a certain time
+- Make sure the bot loses once in a while
+- Smoother movement of player paddle
+- Use arrow keys to control player paddle rather than mouse
+- Hide the instructions when the game begins

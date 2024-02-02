@@ -7,14 +7,22 @@ const playerPaddle = new Paddle(document.getElementById("player-paddle"));
 const botPaddle = new Paddle(document.getElementById("bot-paddle"));
 const botScoreElement = document.getElementById("bot-score");
 const playerScoreElement = document.getElementById("player-score");
+const resetBtn = document.getElementById("reset-btn");
 
 let lastTime;
 
 function update(time) {
   if (lastTime != null) {
     const delta = time - lastTime;
-    ball.update(delta);
+    //Game begins
+    ball.update(delta, [playerPaddle.rect(), botPaddle.rect()]);
     botPaddle.update(delta, ball.y);
+
+    const hue = parseFloat(
+      getComputedStyle(document.documentElement).getPropertyValue("--hue")
+    );
+
+    document.documentElement.style.setProperty("--hue", hue + delta * 0.01);
 
     if (isLose()) handleLose();
   }
@@ -31,7 +39,7 @@ function handleLose() {
   const rect = ball.rect();
   if (rect.right >= window.innerWidth) {
     botScoreElement.textContent = parseInt(botScoreElement.textContent) + 1;
-  } else if (rect.left >= windowInnerWidth) {
+  } else {
     playerScoreElement.textContent =
       parseInt(playerScoreElement.textContent) + 1;
   }
@@ -45,5 +53,13 @@ document.addEventListener("mousemove", (e) => {
   playerPaddle.position = (e.y / window.innerHeight) * 100;
 });
 
-// for ball
+resetBtn.addEventListener("click", () => {
+  ball.reset();
+  playerPaddle.reset();
+  botPaddle.reset();
+
+  playerScoreElement.textContent = 0;
+  botScoreElement.textContent = 0;
+});
+
 window.requestAnimationFrame(update);
